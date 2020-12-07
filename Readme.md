@@ -4,9 +4,9 @@
 
 #### （一）HMM模型
 
-对于一个随机事件，有一个可以观测到的值序列：![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps1.png)
+对于一个随机事件，有一个可以观测到的值序列：![img](file:///..\wps1.png)
 
-该事件的每一个观察到的值![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps2.png)都对应一个生成他的状态![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps3.png)，则其背后存在一个状态序列：![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps4.png)
+该事件的每一个观察到的值![img](file:///..\wps2.png)都对应一个生成他的状态![img](file:///..\wps3.png)，则其背后存在一个状态序列：![img](file:///..\wps4.png)
 
 假设1：（马尔科夫假设）每一个状态的值都与其前n个状态的值相关
 
@@ -14,21 +14,21 @@
 
 假设3：（输出独立性假设）输出只与当前状态有关
 
-则一个HMM模型是一个五元组![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps5.png)
+则一个HMM模型是一个五元组![img](file:///..\wps5.png)
 
 其中
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps6.png)
+![img](file:///..\wps6.png)
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps7.png)
+![img](file:///..\wps7.png)
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps8.png)
+![img](file:///..\wps8.png)
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps9.png)
+![img](file:///..\wps9.png)
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps10.png)
+![img](file:///..\wps10.png)
 
-解码问题：对于给定的模型![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps11.png)和观察值序列![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps12.png)，求出最大可能性的状态序列![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps13.png)。
+解码问题：对于给定的模型![img](file:///..\wps11.png)和观察值序列![img](file:///..\wps12.png)，求出最大可能性的状态序列![img](file:///..\wps13.png)。
 
  
 
@@ -40,7 +40,7 @@
 
 若用户想在计算机得到汉字“我爱中国”，则需要往键盘敲入“wo ai zhong guo”这四个英文字符串。从HMM模型出发，“wo ai zhong guo”是观测值序列，如下观测流程图。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps14.png)
+![img](file:///..\wps14.png)
 
 图1 我爱中国汉字拼音输入HMM观测过程
 
@@ -48,7 +48,7 @@
 
 图中蓝色圆圈为隐藏的状态，即汉字，橙色圆圈代表可以观测到观测值，拼音。联系HMM模型，汉字“我”到汉字“爱”的过程是一个转移过程，如果用二元语法模型，则汉字“爱”在“我”的出现情况下有一个转移概率，如后汉字分析同理。同时，汉字我到拼音“wo”有一个发射过程，也有一个概率。则上图可变化为基于概率的识别流程图，如下。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps15.png)
+![img](file:///..\wps15.png)
 
 图2 我爱中国汉字拼音输入基于概率的识别过程
 
@@ -58,7 +58,7 @@
 
 如次，基于HMM模型的解码问题，可以求解出状态转移链中概率最大的一条路径，此条路径即所求的汉子序列。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps16.jpg) 
+![img](file:///..\wps16.jpg) 
 
 图3 “wo ai zhong guo”拼音输入基于HMM的识别过程
 
@@ -68,19 +68,19 @@
 
 维特比(Viterbi)算法用于解码，在给定模型μ和观察序列O的条件下，使条件概率P(Q|O，μ)最大的状态序列，即
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps17.jpg) 
+![img](file:///..\wps17.jpg) 
 
-维特比算法运用动态规划的搜索算法求解这种最优状态序列。为了实现这种搜索，首先定义一个维特比变量![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps18.png)。
+维特比算法运用动态规划的搜索算法求解这种最优状态序列。为了实现这种搜索，首先定义一个维特比变量![img](file:///..\wps18.png)。
 
-​	维特比变量![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps19.png)是在时间t时，HMM沿着某一条路径到达状态![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps20.png)，并输出观察序列的最大概率:
+​	维特比变量![img](file:///..\wps19.png)是在时间t时，HMM沿着某一条路径到达状态![img](file:///..\wps20.png)，并输出观察序列的最大概率:
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps21.jpg) 
+![img](file:///..\wps21.jpg) 
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps22.png)有如下递归关系:
+![img](file:///..\wps22.png)有如下递归关系:
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps23.jpg) 
+![img](file:///..\wps23.jpg) 
 
-这种递归关系使我们能够运用动态规划搜索技术。为了记录在时间t时，HMM通过哪一条概率最大的路径到达状态![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps24.png)。
+这种递归关系使我们能够运用动态规划搜索技术。为了记录在时间t时，HMM通过哪一条概率最大的路径到达状态![img](file:///..\wps24.png)。
 
 其伪代码如下：
 
@@ -90,19 +90,19 @@
 
 ***\*初始化：\****
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps25.jpg) 
+![img](file:///..\wps25.jpg) 
 
  
 
 ***\*归纳计算\****
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps26.jpg) 
+![img](file:///..\wps26.jpg) 
 
 ***\*终结\****
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps27.jpg) 
+![img](file:///..\wps27.jpg) 
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps28.jpg) 
+![img](file:///..\wps28.jpg) 
 
 \-----------------------------------------------------------
 
@@ -110,7 +110,7 @@
 
 其构建的流程如下图。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps29.jpg) 
+![img](file:///..\wps29.jpg) 
 
 图4 项目模型构件图
 
@@ -124,27 +124,27 @@
 
 由于文件中的文字段都是带有非法字符和大段文字的。所以这里本人使用了正则表达式来匹配中文字符，对于非中文字符都直接忽略，并切断句。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps30.jpg)如此，即可得到如图5所示的规则汉字串。
+![img](file:///..\wps30.jpg)如此，即可得到如图5所示的规则汉字串。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps31.jpg) 
+![img](file:///..\wps31.jpg) 
 
 图5 清洗非法字符后的汉字串
 
 但是，HMM模型需要拼音到汉字的发射概率，现在我们还缺少汉字的标准注音。所以，本人调用了pypinyin第三方库来对所有的汉字注音。获得拼音列表。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps32.jpg) 
+![img](file:///..\wps32.jpg) 
 
 ###### （2）语言模型训练
 
 基于如上的大量语料库文本，由一段文字可以得到文字库和拼音库，然后统计文字的频次、文字到拼音的频次、文字到文字的频次。如此，根据N-Gram 语言模型原理
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps33.png)
+![img](file:///..\wps33.png)
 
 得出一元语言模型和二元语言模型：
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps34.png)
+![img](file:///..\wps34.png)
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps35.png)
+![img](file:///..\wps35.png)
 
  
 
@@ -152,9 +152,9 @@
 
  
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps36.png)
+![img](file:///..\wps36.png)
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps37.png)
+![img](file:///..\wps37.png)
 
 依照如上公式带入语料库文本信息则可以训练得到HMM模型的概率矩阵。同时，为方便HMM模型程序调用整理好的语料数据，将此些加工后的语料文件保存为python易使用的npy文件。
 
@@ -164,19 +164,19 @@
 
 统计汉字的出现频次，用于计算一元语言模型。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps38.png)
+![img](file:///..\wps38.png)
 
 汉字的编码列表
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps39.png)
+![img](file:///..\wps39.png)
 
 汉字编码到汉字编码的次数映射，用于统计二元语法模型。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps40.png)
+![img](file:///..\wps40.png)
 
 汉字到拼音的频数，其格式为{'了':{'le':5, 'liao':10},'屈':{'qu':5}}。 
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps41.png)
+![img](file:///..\wps41.png)
 
 至此，所有的语料文件都已训练好并保存为npy格式的文件，方便调用。
 
@@ -186,7 +186,7 @@
 
 ***\*---------------------------------------------------------------\****
 
-***\*输入：拼音序列\**** ![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps42.png)
+***\*输入：拼音序列\**** ![img](file:///..\wps42.png)
 
 ***\*过程：\****
 
@@ -208,23 +208,23 @@
 
 首先是加载语料数据文件。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps43.png)
+![img](file:///..\wps43.png)
 
 然后是设计了一个Graph邮箱图类来存储HMM模型的结构。其初始化为将输入的拼音字符串分解，为每个拼音构建其汉字节点，然后将每个节点初始化。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps44.png)
+![img](file:///..\wps44.png)
 
 其中每个汉字都是一个节点，节点也是一个类，保存了其汉字、次数、维特比变量和前一个节点等熟悉。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps45.png)
+![img](file:///..\wps45.png)
 
 在初始化好HMM模型结构后，我们就可以开始用维特比算法计算每一个节点的维特比变量，来对整个模型的节点进行遍历计算。其中初始节点的维特比变量用一元语法模型计算，后续节点用二元语法模型状态，都是用的加一平滑技术。然后发射概率也是加一平滑的。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps46.png)
+![img](file:///..\wps46.png)
 
 在训练完成后，HMM模型就可以找到最优的路径了，这时候利用每一个节点保存的最优上一节点可以反向遍历得到最佳的路径，也就是最优的字符串序列，期待吗如下。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps47.png)
+![img](file:///..\wps47.png)
 
 至此，HMM模型已经训练完成和可以进行输入法预测功能。
 
@@ -248,21 +248,21 @@
 
 ##### （1）基于toutiao_cat_data.txt文件训练后，对于实验给的测试集.txt文件进行测试如下图。可得到测试准确率在79.2%。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps48.jpg) 
+![img](file:///..\wps48.jpg) 
 
 ##### （2）基于toutiao_cat_data.txt文件训练后，对于github.com/THUzhangga的test_set.txt文件进行测试如下图。可得到测试准确率在67.58%。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps49.jpg) 
+![img](file:///..\wps49.jpg) 
 
 ### 2.基于改进后的语料文件的HMM训练与测试的结果
 
 ##### （1）基于github.com/THUzhangga的语料文件训练后，对于实验给的测试集.txt文件进行测试如下图。可得到测试准确率在87.61%，可明显看到准确率大幅度提升。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps50.jpg) 
+![img](file:///..\wps50.jpg) 
 
 ##### （2）基于github.com/THUzhangga的语料文件训练后对于github.com/THUzhangga的test_set.txt文件进行测试如下图。可得到测试准确率在75.56%，可明显看到准确率大幅度提升。
 
-![img](file:///C:\Users\49393\AppData\Local\Temp\ksohtml776\wps51.jpg) 
+![img](file:///..\wps51.jpg) 
 
 ### 3.模型评价与分析
 
